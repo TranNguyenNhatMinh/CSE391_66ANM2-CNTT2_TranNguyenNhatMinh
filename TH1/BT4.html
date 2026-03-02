@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        tr,
+        td {
+            border: 1px solid black none;
+            border-collapse: collapse;  
+            text-align: left;
+        }
+        table{
+            margin-left: 10px;
+        }
+        
+        th, td {
+    padding: 8px 12px;
+}
+    </style>
+</head>
+<body>
+    <div>
+        <header>
+        <h3 style="border-bottom: 1px solid black;">Basic Info</h3>
+        </header>
+        <table>
+            <tr>
+                <th>Employee ID</th>
+                <th>9</th>
+            </tr>
+            <tr>
+                <th>Last Name</th>
+                <th>Dodsworth</th>
+            </tr>
+            <tr>
+                <th>First Name</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>Gender</th>
+                <th>
+                    <input type="radio" name="gender">
+                    <label>Male</label><br>
+                    <input type="radio" name="gender">
+                    <label>Female</label><br>
+                    <input type="radio" name="gender">
+                    <label>XXX</label><br>
+                    <input type="radio" name="gender">
+                    <label>ZZZ</label></th>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>Suffix</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>BirthDate</th>
+                <th><input type="datetime-local"></th>
+            </tr>
+            <tr>
+                <th>HireDate</th>
+                <th><input type="datetime-local"></th>
+            </tr>
+            <tr>
+                <th>SSN # (if applicable)</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>Reports To</th>
+                <th><select>
+                    <option>Buchanan</option>
+                </select></th>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <header>
+        <h3 style="border-bottom: 1px solid black;">Contact Info</h3>
+        </header>
+        <table>
+            <tr>
+                <th>Email</th>
+                <th><input type="email" placeholder="name@example.com"></th>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>City</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>Region</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>Post Code</th>
+                <th><input type="text"></th>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <th><select>
+                    <option>Russian Federation</option>
+                </select></th>
+            </tr>
+            <tr>
+                <th>US Home Phone</th>
+                <th><input type="tel"></th>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <th><input type="text"></th>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        <header>
+        <h3 style="border-bottom: 1px solid black;">Optional Info</h3>
+        </header>
+        <table>
+            <tr>
+                <th>Notes</th>
+                <th><textarea></textarea></th>
+            </tr>
+            <tr>
+                <th>Preferred Shift</th>
+                <th>
+                    <input type="checkbox" name="" id="">
+                    <label>Regular</label><br>
+                    <input type="checkbox" name="" id="">
+                    <label>123</label>
+                </th>
+            </tr>
+            <tr>
+                <th>Active?</th>
+                <th><input type="checkbox"></th>
+            </tr>
+            <tr>
+                <th>Are you human?</th>
+                <th><pre>
+*******  *******  ******       *      *   *   *   ******
+   *        *     *     *     * *     *  * *  *  *      *
+   *        *     *     *    *   *    * *   * *  *      *
+   *        *     *     *   *******   **     **  *      *
+   *     *******  ******   *       *  *       *   ******</pre>
+                <p style="text-align: center;"><b>Click to Change</b></p>
+                <input type="text" style="width: 100%;">
+                </th>
+            </tr>
+            </table>
+    </div>
+    <header>
+        <h3 style="border-bottom: 1px solid black;"></h3>
+        <div style=" display: flex; justify-content: space-between;">
+            <div>
+                <button><</button>
+                <button>></button>
+            </div>
+            <div>
+                <button>Save</button>
+                <button>Cancel</button>
+            </div>
+        </div>
+        <p><b>* required</b></p>
+    </header>
+</body>
+</html>

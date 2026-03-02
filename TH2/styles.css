@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+}
+
+header {
+    font-family: none;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 15px;
+    box-sizing: border-box;
+}
+
+#page-logo a {
+    font-family: Raleway;
+    font-style: italic;
+    color: #FCFC01;
+    font-size: 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #FCFC01;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: white;
+}
+
+footer {
+    background-color: #000000;
+    padding: 2rem;
+}
+
+footer ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 50px;
+}
+
+footer img {
+    width: 40px;
+    height: 40px;
+}
+
+#hero {
+    height: 600px;
+    background-image:url(ocean.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero-content {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    text-align: center;
+    padding: 20px 100px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+#hero-content h1 {
+    font-family: Raleway;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+#hero-content p {
+    text-transform: uppercase;
+}
+
+#hero-content a {
+    font-family: Raleway;
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: #FCFC01;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+#highlights {
+    padding-top: 5px;
+    background-color: #e0f7fa;
+    text-align: center;
+}
+
+#highlights h2 {
+    font-family: Raleway;
+    color: #2e022b;
+    text-transform: uppercase;
+}
+
+#destinations {
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 2rem;
+    padding: 0;
+}
+
+.destination img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.destination p {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #444;
+}
+
+.destination strong {
+    color: #259d81;
+}
