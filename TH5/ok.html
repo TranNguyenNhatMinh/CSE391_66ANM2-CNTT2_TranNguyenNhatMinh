@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxus - Tìm ngôi nhà lý tưởng của bạn</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  :root {
+    --primary: #0066CC;
+    --primary-dark: #004fa3;
+    --accent: #FF6B35;
+    --navy: #0a1628;
+    --navy-mid: #0d2040;
+    --sky: #e8f4fd;
+    --sky-mid: #cce8f8;
+    --text: #1a1a2e;
+    --text-mid: #555;
+    --text-light: #888;
+    --white: #fff;
+    --border: #e0eaf4;
+    --card-shadow: 0 4px 24px rgba(0,102,204,0.10);
+    --radius: 12px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Be Vietnam Pro', sans-serif; color: var(--text); background: #fff; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== TOP BAR ===== */
+  .topbar {
+    background: var(--navy);
+    color: #aac4e0;
+    font-size: 12px;
+    padding: 6px 0;
+  }
+  .topbar .inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar a { color: #aac4e0; margin-left: 16px; }
+  .topbar a:hover { color: #fff; }
+
+  /* ===== NAVBAR ===== */
+  nav {
+    background: var(--navy-mid);
+    padding: 0;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto; padding: 0 20px;
+    display: flex; align-items: center; gap: 32px; height: 64px;
+  }
+  .logo {
+    display: flex; align-items: center; gap: 8px;
+    color: #fff; font-size: 22px; font-weight: 800;
+    letter-spacing: 1px;
+  }
+  .logo span { color: var(--accent); }
+  .logo i { color: var(--accent); font-size: 20px; }
+  .nav-links {
+    display: flex; gap: 4px; flex: 1;
+    list-style: none;
+  }
+  .nav-links a {
+    color: #c8d8ee; font-size: 13.5px; font-weight: 500;
+    padding: 8px 14px; border-radius: 6px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover, .nav-links a.active { background: rgba(255,255,255,0.08); color: #fff; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .btn-login {
+    background: transparent; border: 1.5px solid #4a80c0;
+    color: #c8d8ee; padding: 7px 18px; border-radius: 7px;
+    font-size: 13px; cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .btn-login:hover { background: rgba(255,255,255,0.08); color: #fff; }
+  .btn-post {
+    background: var(--accent); border: none;
+    color: #fff; padding: 8px 20px; border-radius: 7px;
+    font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit;
+    transition: all 0.2s;
+  }
+  .btn-post:hover { background: #e55a25; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #0d3060 60%, #1a5090 100%);
+    padding: 70px 20px 90px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,102,204,0.3) 0%, transparent 60%);
+  }
+  .hero-tagline {
+    color: #7bb8f0; font-size: 13px; font-weight: 500;
+    letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px;
+  }
+  .hero h1 {
+    color: #fff; font-size: clamp(28px, 4vw, 46px); font-weight: 800;
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .hero p {
+    color: #9bbfe0; font-size: 15px; max-width: 560px;
+    margin: 0 auto 36px; line-height: 1.7;
+  }
+  .search-bar {
+    background: #fff; border-radius: 12px;
+    display: flex; align-items: center;
+    max-width: 760px; margin: 0 auto;
+    padding: 8px; gap: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    position: relative; z-index: 1;
+  }
+  .search-bar select, .search-bar input {
+    border: none; outline: none; font-family: inherit;
+    font-size: 14px; color: var(--text);
+    padding: 10px 14px; border-radius: 8px;
+    background: #f4f8fe;
+  }
+  .search-bar select { min-width: 130px; cursor: pointer; }
+  .search-bar input { flex: 1; }
+  .search-bar input::placeholder { color: #aaa; }
+  .btn-search {
+    background: var(--primary); color: #fff;
+    border: none; padding: 12px 28px; border-radius: 9px;
+    font-size: 14px; font-weight: 600; cursor: pointer;
+    font-family: inherit; white-space: nowrap;
+    transition: background 0.2s;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .btn-search:hover { background: var(--primary-dark); }
+
+  /* ===== CATEGORY ICONS ===== */
+  .cat-bar {
+    background: var(--navy);
+    padding: 20px 20px;
+  }
+  .cat-bar .inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; justify-content: center; gap: 32px;
+  }
+  .cat-item {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: #9bbfe0; font-size: 12px; cursor: pointer;
+    transition: color 0.2s;
+  }
+  .cat-item:hover, .cat-item.active { color: #fff; }
+  .cat-icon {
+    width: 52px; height: 52px; border-radius: 10px;
+    background: rgba(255,255,255,0.07); border: 1.5px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; transition: all 0.2s;
+  }
+  .cat-item:hover .cat-icon, .cat-item.active .cat-icon {
+    background: var(--primary); border-color: var(--primary);
+    color: #fff;
+  }
+
+  /* ===== SECTION WRAPPER ===== */
+  .section { padding: 64px 20px; }
+  .section.bg-sky { background: var(--sky); }
+  .section.bg-navy { background: var(--navy); color: #fff; }
+  .section-inner { max-width: 1200px; margin: 0 auto; }
+  .section-label {
+    color: var(--primary); font-size: 12px; font-weight: 600;
+    letter-spacing: 3px; text-transform: uppercase;
+    text-align: center; margin-bottom: 10px;
+  }
+  .section-title {
+    font-size: clamp(22px, 3vw, 32px); font-weight: 800;
+    text-align: center; margin-bottom: 10px; line-height: 1.3;
+  }
+  .section-sub {
+    color: var(--text-light); text-align: center;
+    font-size: 14px; margin-bottom: 40px; line-height: 1.7;
+    max-width: 500px; margin-left: auto; margin-right: auto;
+  }
+  .section.bg-navy .section-sub { color: #7bacd4; }
+
+  /* ===== ABOUT ROW ===== */
+  .about-row {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 60px; align-items: center;
+  }
+  .about-img {
+    position: relative; border-radius: 16px; overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0,102,204,0.15);
+  }
+  .about-img img { width: 100%; display: block; object-fit: cover; height: 340px; }
+  .about-img .play-btn {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 64px; height: 64px; background: rgba(255,255,255,0.9);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 22px; color: var(--primary);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .about-label { color: var(--primary); font-weight: 600; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 14px; }
+  .about-title { font-size: 28px; font-weight: 800; line-height: 1.3; margin-bottom: 16px; }
+  .about-text { color: var(--text-mid); font-size: 14px; line-height: 1.8; margin-bottom: 20px; }
+  .about-features { display: flex; flex-direction: column; gap: 12px; }
+  .about-feat { display: flex; align-items: flex-start; gap: 14px; }
+  .feat-icon { width: 40px; height: 40px; background: var(--sky); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 16px; flex-shrink: 0; }
+  .feat-text h4 { font-size: 14px; font-weight: 700; margin-bottom: 3px; }
+  .feat-text p { color: var(--text-light); font-size: 13px; line-height: 1.5; }
+
+  /* ===== PROPERTY CARDS ===== */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .prop-card {
+    background: #fff; border-radius: var(--radius);
+    box-shadow: var(--card-shadow);
+    overflow: hidden; transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .prop-card:hover { transform: translateY(-4px); box-shadow: 0 8px 36px rgba(0,102,204,0.18); }
+  .card-img { position: relative; overflow: hidden; height: 190px; }
+  .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .prop-card:hover .card-img img { transform: scale(1.06); }
+  .card-badge {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--accent); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 20px; letter-spacing: 0.5px;
+  }
+  .card-badge.new { background: #22c55e; }
+  .card-body { padding: 16px; }
+  .card-name { font-size: 15px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
+  .card-loc { color: var(--text-light); font-size: 12px; margin-bottom: 12px; }
+  .card-loc i { color: var(--primary); margin-right: 4px; }
+  .card-meta {
+    display: flex; gap: 14px; flex-wrap: wrap;
+    color: var(--text-mid); font-size: 12px; margin-bottom: 14px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border);
+  }
+  .card-meta span { display: flex; align-items: center; gap: 5px; }
+  .card-meta i { color: var(--primary); }
+  .card-footer { display: flex; justify-content: space-between; align-items: center; }
+  .card-price { color: var(--primary); font-size: 15px; font-weight: 800; }
+  .card-price span { color: var(--text-light); font-size: 12px; font-weight: 400; }
+  .card-action { display: flex; gap: 8px; }
+  .btn-detail {
+    background: var(--primary); color: #fff;
+    border: none; padding: 7px 16px; border-radius: 7px;
+    font-size: 12px; font-weight: 600; cursor: pointer; font-family: inherit;
+    transition: background 0.2s;
+  }
+  .btn-detail:hover { background: var(--primary-dark); }
+  .btn-more {
+    text-align: center; margin-top: 40px;
+  }
+  .btn-view-more {
+    background: transparent; border: 2px solid var(--primary);
+    color: var(--primary); padding: 12px 36px; border-radius: 9px;
+    font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;
+    transition: all 0.2s; letter-spacing: 0.5px;
+  }
+  .btn-view-more:hover { background: var(--primary); color: #fff; }
+
+  /* ===== CATEGORY GRID ===== */
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .cat-card {
+    position: relative; border-radius: var(--radius); overflow: hidden;
+    cursor: pointer; transition: transform 0.2s;
+    height: 180px;
+  }
+  .cat-card:hover { transform: scale(1.02); }
+  .cat-card img { width: 100%; height: 100%; object-fit: cover; }
+  .cat-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 16px;
+  }
+  .cat-overlay h3 { color: #fff; font-size: 16px; font-weight: 700; }
+  .cat-overlay p { color: #ddd; font-size: 12px; margin-top: 2px; }
+
+  /* ===== STATS ===== */
+  .stats-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 24px; text-align: center;
+  }
+  .stat-item {}
+  .stat-icon {
+    width: 60px; height: 60px; background: rgba(255,255,255,0.08);
+    border-radius: 14px; display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: #7bb8f0; margin: 0 auto 16px;
+  }
+  .stat-num { font-size: 36px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .stat-label { color: #7bb8f0; font-size: 13px; }
+
+  /* ===== MISSION ===== */
+  .mission-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 32px; text-align: center;
+  }
+  .mission-item { padding: 24px; }
+  .mission-icon {
+    width: 64px; height: 64px; background: var(--sky);
+    border-radius: 16px; display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: var(--primary); margin: 0 auto 16px;
+  }
+  .mission-item h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+  .mission-item p { color: var(--text-light); font-size: 14px; line-height: 1.7; }
+
+  /* ===== TESTIMONIALS ===== */
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testi-card {
+    background: #fff; border-radius: var(--radius);
+    padding: 24px; box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+  }
+  .testi-text {
+    color: var(--text-mid); font-size: 14px; line-height: 1.7;
+    margin-bottom: 20px; font-style: italic;
+  }
+  .testi-user { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar {
+    width: 46px; height: 46px; border-radius: 50%;
+    object-fit: cover; border: 2px solid var(--primary);
+  }
+  .testi-name { font-weight: 700; font-size: 14px; }
+  .testi-role { color: var(--text-light); font-size: 12px; }
+  .testi-stars { color: #f59e0b; font-size: 13px; margin-top: 4px; }
+
+  /* ===== NEWS ===== */
+  .news-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .news-card {
+    background: #fff; border-radius: var(--radius);
+    box-shadow: var(--card-shadow); overflow: hidden;
+    transition: transform 0.2s;
+  }
+  .news-card:hover { transform: translateY(-3px); }
+  .news-img { height: 180px; overflow: hidden; }
+  .news-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .news-card:hover .news-img img { transform: scale(1.06); }
+  .news-body { padding: 18px; }
+  .news-tag { background: var(--sky); color: var(--primary); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
+  .news-title { font-size: 15px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
+  .news-date { color: var(--text-light); font-size: 12px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy); color: #9bbfe0;
+    padding: 60px 20px 24px;
+  }
+  .footer-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 40px;
+  }
+  .footer-brand .logo { margin-bottom: 16px; display: inline-flex; }
+  .footer-brand p { font-size: 13px; line-height: 1.8; max-width: 280px; margin-bottom: 20px; }
+  .social-links { display: flex; gap: 10px; }
+  .social-btn {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: center;
+    color: #9bbfe0; cursor: pointer; font-size: 14px;
+    transition: all 0.2s;
+  }
+  .social-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .footer-col h4 { color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 18px; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a { font-size: 13px; color: #9bbfe0; transition: color 0.2s; }
+  .footer-col ul li a:hover { color: #fff; }
+  .footer-bottom {
+    max-width: 1200px; margin: 0 auto;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 24px; display: flex; justify-content: space-between;
+    align-items: center; font-size: 13px;
+  }
+  .footer-newsletter { display: flex; gap: 8px; margin-top: 16px; }
+  .footer-newsletter input {
+    flex: 1; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px; padding: 9px 14px; color: #fff; font-family: inherit; font-size: 13px; outline: none;
+  }
+  .footer-newsletter input::placeholder { color: #6a8aa8; }
+  .footer-newsletter button {
+    background: var(--primary); border: none; color: #fff;
+    padding: 9px 18px; border-radius: 8px; font-family: inherit; font-size: 13px; cursor: pointer;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #f0f4f8; }
+  ::-webkit-scrollbar-thumb { background: #90b8d8; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="inner">
+    <span><i class="fas fa-phone" style="margin-right:6px"></i>1900 1234 &nbsp;|&nbsp; <i class="fas fa-envelope" style="margin-right:6px"></i>support@luxus.vn</span>
+    <div>
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+      <a href="#"><i class="fab fa-zalo" style="font-style:normal;font-family:inherit;font-weight:700;">Z</i></a>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo"><i class="fas fa-building"></i><span>Luxus</span></div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Trang chủ</a></li>
+      <li><a href="#">Dự án</a></li>
+      <li><a href="#">Nhà đất bán</a></li>
+      <li><a href="#">Nhà đất thuê</a></li>
+      <li><a href="#">Tin tức</a></li>
+      <li><a href="#">Liên hệ</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="btn-login">Đăng nhập</button>
+      <button class="btn-post">Đăng tin</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tagline">PrimeLuxe Real Estate</div>
+  <h1>Tìm ngôi nhà lý tưởng<br>của bạn</h1>
+  <p>Khám phá hàng nghìn bất động sản chất lượng cao, từ căn hộ sang trọng đến biệt thự đẳng cấp trên khắp Việt Nam.</p>
+  <div class="search-bar">
+    <select>
+      <option>Tỉnh / Thành</option>
+      <option>Hà Nội</option>
+      <option>TP. Hồ Chí Minh</option>
+      <option>Đà Nẵng</option>
+      <option>Nha Trang</option>
+    </select>
+    <select>
+      <option>Loại BĐS</option>
+      <option>Căn hộ</option>
+      <option>Nhà phố</option>
+      <option>Biệt thự</option>
+      <option>Đất nền</option>
+    </select>
+    <input type="text" placeholder="Tìm kiếm theo tên dự án, địa chỉ...">
+    <button class="btn-search"><i class="fas fa-search"></i> Tìm kiếm</button>
+  </div>
+</div>
+
+<!-- CATEGORY ICONS -->
+<div class="cat-bar">
+  <div class="inner">
+    <div class="cat-item active" onclick="selectCat(this)">
+      <div class="cat-icon"><i class="fas fa-home"></i></div>
+      <span>Nhà ở</span>
+    </div>
+    <div class="cat-item" onclick="selectCat(this)">
+      <div class="cat-icon"><i class="fas fa-building"></i></div>
+      <span>Căn hộ</span>
+    </div>
+    <div class="cat-item" onclick="selectCat(this)">
+      <div class="cat-icon"><i class="fas fa-landmark"></i></div>
+      <span>Biệt thự</span>
+    </div>
+    <div class="cat-item" onclick="selectCat(this)">
+      <div class="cat-icon"><i class="fas fa-map-marker-alt"></i></div>
+      <span>Đất nền</span>
+    </div>
+    <div class="cat-item" onclick="selectCat(this)">
+      <div class="cat-icon"><i class="fas fa-store"></i></div>
+      <span>Mặt bằng</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT / WELCOME -->
+<section class="section">
+  <div class="section-inner">
+    <div class="about-row">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Luxus Property">
+        <div class="play-btn"><i class="fas fa-play" style="margin-left:3px"></i></div>
+      </div>
+      <div>
+        <div class="about-label">Chào mừng đến với PrimeLuxe</div>
+        <div class="about-title">Đơn vị bất động sản<br>uy tín hàng đầu</div>
+        <p class="about-text">Với hơn 10 năm kinh nghiệm, chúng tôi tự hào đã giúp hàng nghìn khách hàng tìm được ngôi nhà mơ ước. Đội ngũ chuyên viên tư vấn nhiệt tình, am hiểu thị trường luôn sẵn sàng đồng hành cùng bạn.</p>
+        <div class="about-features">
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="feat-text"><h4>Pháp lý minh bạch</h4><p>Tất cả sản phẩm đều có đầy đủ giấy tờ pháp lý, đảm bảo an toàn cho khách hàng</p></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-handshake"></i></div>
+            <div class="feat-text"><h4>Tư vấn tận tâm</h4><p>Đội ngũ chuyên gia 24/7 hỗ trợ khách hàng mọi thắc mắc về bất động sản</p></div>
+          </div>
+          <div class="about-feat">
+            <div class="feat-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="feat-text"><h4>Đầu tư sinh lời</h4><p>Danh mục đầu tư được chọn lọc kỹ lưỡng, tiềm năng tăng giá cao</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW PROJECTS -->
+<section class="section bg-sky">
+  <div class="section-inner">
+    <div class="section-label">Mới nhất</div>
+    <div class="section-title">Dự Án Mới Nhất</div>
+    <p class="section-sub">Những dự án bất động sản mới nhất, chất lượng cao được tuyển chọn kỹ lưỡng</p>
+    <div class="cards-grid" id="new-projects">
+      <!-- Cards injected by JS -->
+    </div>
+    <div class="btn-more">
+      <button class="btn-view-more">Xem tất cả dự án <i class="fas fa-arrow-right" style="margin-left:8px"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Danh mục</div>
+    <div class="section-title">Các Danh Mục Tiêu Biểu</div>
+    <p class="section-sub">Khám phá đa dạng loại hình bất động sản phù hợp với mọi nhu cầu</p>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80" alt="Nhà vườn">
+        <div class="cat-overlay"><h3>Nhà vườn</h3><p>234 bất động sản</p></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80" alt="Căn hộ">
+        <div class="cat-overlay"><h3>Căn hộ</h3><p>456 bất động sản</p></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1560185007-5f0bb1866cab?w=500&q=80" alt="Biệt thự">
+        <div class="cat-overlay"><h3>Biệt thự</h3><p>128 bất động sản</p></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&q=80" alt="Nhà phố">
+        <div class="cat-overlay"><h3>Nhà phố</h3><p>312 bất động sản</p></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&q=80" alt="Shophouse">
+        <div class="cat-overlay"><h3>Shophouse</h3><p>89 bất động sản</p></div>
+      </div>
+      <div class="cat-card">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Penthouse">
+        <div class="cat-overlay"><h3>Penthouse</h3><p>47 bất động sản</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR PROJECTS -->
+<section class="section bg-sky">
+  <div class="section-inner">
+    <div class="section-label">Phổ biến</div>
+    <div class="section-title">Các Dự Án Phổ Biến</div>
+    <p class="section-sub">Được nhiều khách hàng quan tâm và tìm kiếm nhất hiện nay</p>
+    <div class="cards-grid" id="popular-projects"></div>
+    <div class="btn-more">
+      <button class="btn-view-more">Xem tất cả <i class="fas fa-arrow-right" style="margin-left:8px"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Tầm nhìn</div>
+    <div class="section-title">Tầm Nhìn Và Sứ Mệnh</div>
+    <p class="section-sub">Chúng tôi cam kết mang đến trải nghiệm tốt nhất cho khách hàng</p>
+    <div class="mission-row">
+      <div class="mission-item">
+        <div class="mission-icon"><i class="fas fa-eye"></i></div>
+        <h3>Tầm nhìn</h3>
+        <p>Trở thành nền tảng bất động sản uy tín và hiện đại nhất Việt Nam, kết nối triệu triệu gia đình với ngôi nhà mơ ước.</p>
+      </div>
+      <div class="mission-item">
+        <div class="mission-icon"><i class="fas fa-bullseye"></i></div>
+        <h3>Sứ mệnh</h3>
+        <p>Cung cấp dịch vụ tư vấn chuyên nghiệp, minh bạch và toàn diện, giúp khách hàng đưa ra quyết định đầu tư thông minh.</p>
+      </div>
+      <div class="mission-item">
+        <div class="mission-icon"><i class="fas fa-star"></i></div>
+        <h3>Giá trị cốt lõi</h3>
+        <p>Uy tín - Chuyên nghiệp - Tận tâm. Ba giá trị này là nền tảng mọi hoạt động của chúng tôi từ trước đến nay.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="section bg-navy">
+  <div class="section-inner">
+    <div class="section-label" style="color:#7bb8f0">Con số ấn tượng</div>
+    <div class="section-title" style="color:#fff">Những Con Số Ấn Tượng</div>
+    <p class="section-sub">Kết quả đạt được qua hơn 10 năm hoạt động</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-home"></i></div>
+        <div class="stat-num" data-target="3200">0</div>
+        <div class="stat-label">Dự án bất động sản</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-users"></i></div>
+        <div class="stat-num" data-target="8500">0</div>
+        <div class="stat-label">Khách hàng hài lòng</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="stat-num" data-target="63">0</div>
+        <div class="stat-label">Tỉnh thành phủ sóng</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-icon"><i class="fas fa-award"></i></div>
+        <div class="stat-num" data-target="15">0</div>
+        <div class="stat-label">Năm kinh nghiệm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section bg-sky">
+  <div class="section-inner">
+    <div class="section-label">Đánh giá</div>
+    <div class="section-title">Đánh Giá Từ Khách Hàng</div>
+    <p class="section-sub">Hàng nghìn khách hàng đã tin tưởng và hài lòng với dịch vụ của chúng tôi</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-text">"Tôi rất hài lòng với dịch vụ tư vấn chuyên nghiệp của Luxus. Đội ngũ nhân viên nhiệt tình, hỗ trợ tôi từng bước trong quá trình mua nhà."</p>
+        <div class="testi-user">
+          <img class="testi-avatar" src="https://randomuser.me/api/portraits/men/32.jpg" alt="An An">
+          <div>
+            <div class="testi-name">Nguyễn Văn An</div>
+            <div class="testi-role">Khách hàng mua nhà</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">"Nhờ có Luxus, tôi đã tìm được căn hộ ưng ý với giá hợp lý. Pháp lý rõ ràng, thủ tục nhanh chóng, tôi sẽ giới thiệu cho bạn bè."</p>
+        <div class="testi-user">
+          <img class="testi-avatar" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Lan">
+          <div>
+            <div class="testi-name">Trần Thị Lan</div>
+            <div class="testi-role">Nhà đầu tư</div>
+            <div class="testi-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-text">"Luxus có danh mục sản phẩm phong phú, đa dạng phân khúc. Tôi dễ dàng so sánh và lựa chọn dự án phù hợp với ngân sách của mình."</p>
+        <div class="testi-user">
+          <img class="testi-avatar" src="https://randomuser.me/api/portraits/men/67.jpg" alt="Tuyen">
+          <div>
+            <div class="testi-name">Lê Đăng Tuyên</div>
+            <div class="testi-role">Khách hàng mua căn hộ</div>
+            <div class="testi-stars">★★★★☆</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="section">
+  <div class="section-inner">
+    <div class="section-label">Blog</div>
+    <div class="section-title">Tin Tức Thị Trường</div>
+    <p class="section-sub">Cập nhật xu hướng và thông tin mới nhất về thị trường bất động sản</p>
+    <div class="news-grid">
+      <div class="news-card">
+        <div class="news-img"><img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=500&q=80" alt="News 1"></div>
+        <div class="news-body">
+          <span class="news-tag">Thị trường</span>
+          <div class="news-title">Thị trường bất động sản năm 2025: Tín hiệu phục hồi tích cực</div>
+          <div class="news-date"><i class="fas fa-calendar" style="margin-right:6px;color:var(--primary)"></i>10/03/2025</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=500&q=80" alt="News 2"></div>
+        <div class="news-body">
+          <span class="news-tag">Đầu tư</span>
+          <div class="news-title">Top 5 khu vực đầu tư bất động sản sinh lời nhất hiện nay</div>
+          <div class="news-date"><i class="fas fa-calendar" style="margin-right:6px;color:var(--primary)"></i>08/03/2025</div>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img"><img src="https://images.unsplash.com/photo-1449844908441-8829872d2607?w=500&q=80" alt="News 3"></div>
+        <div class="news-body">
+          <span class="news-tag">Pháp lý</span>
+          <div class="news-title">Những điểm mới trong Luật Đất Đai 2025 cần biết</div>
+          <div class="news-date"><i class="fas fa-calendar" style="margin-right:6px;color:var(--primary)"></i>05/03/2025</div>
+        </div>
+      </div>
+    </div>
+    <div class="btn-more">
+      <button class="btn-view-more">Xem tất cả tin tức <i class="fas fa-arrow-right" style="margin-left:8px"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo"><i class="fas fa-building"></i>&nbsp;<span>Luxus</span></div>
+      <p>Nền tảng bất động sản uy tín hàng đầu Việt Nam, kết nối khách hàng với những sản phẩm chất lượng tốt nhất.</p>
+      <div class="social-links">
+        <div class="social-btn"><i class="fab fa-facebook-f"></i></div>
+        <div class="social-btn"><i class="fab fa-youtube"></i></div>
+        <div class="social-btn"><i class="fab fa-tiktok"></i></div>
+        <div class="social-btn"><i class="fab fa-linkedin-in"></i></div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Về chúng tôi</h4>
+      <ul>
+        <li><a href="#">Giới thiệu</a></li>
+        <li><a href="#">Đội ngũ</a></li>
+        <li><a href="#">Tuyển dụng</a></li>
+        <li><a href="#">Tin tức</a></li>
+        <li><a href="#">Liên hệ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dịch vụ</h4>
+      <ul>
+        <li><a href="#">Mua nhà</a></li>
+        <li><a href="#">Thuê nhà</a></li>
+        <li><a href="#">Đầu tư</a></li>
+        <li><a href="#">Tư vấn pháp lý</a></li>
+        <li><a href="#">Định giá</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Nhận tin mới</h4>
+      <p style="font-size:13px;line-height:1.7;margin-bottom:0">Đăng ký nhận thông tin dự án mới nhất</p>
+      <div class="footer-newsletter">
+        <input type="email" placeholder="Email của bạn">
+        <button>Đăng ký</button>
+      </div>
+      <div style="margin-top:20px">
+        <div style="color:#fff;font-size:13px;margin-bottom:8px"><i class="fas fa-phone" style="margin-right:8px;color:var(--accent)"></i>1900 1234</div>
+        <div style="color:#9bbfe0;font-size:13px"><i class="fas fa-envelope" style="margin-right:8px;color:var(--accent)"></i>support@luxus.vn</div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Luxus. Tất cả quyền được bảo lưu.</span>
+    <div style="display:flex;gap:20px">
+      <a href="#" style="color:#9bbfe0">Chính sách bảo mật</a>
+      <a href="#" style="color:#9bbfe0">Điều khoản sử dụng</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== DATA =====
+const properties = [
+  { id:1, name:"Vinhomes Grand Park Quận 9", loc:"Quận 9, TP. HCM", price:"2.5 tỷ", unit:"/căn", beds:3, baths:2, area:85, badge:"Mới", img:"https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=500&q=80" },
+  { id:2, name:"Masteri Thảo Điền Quận 2", loc:"Quận 2, TP. HCM", price:"4.2 tỷ", unit:"/căn", beds:2, baths:2, area:72, badge:"Hot", img:"https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&q=80" },
+  { id:3, name:"Biệt thự Vinhomes Riverside", loc:"Long Biên, Hà Nội", price:"18 tỷ", unit:"/căn", beds:5, baths:4, area:320, badge:"Mới", img:"https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80" },
+  { id:4, name:"Chung cư The Sun Avenue", loc:"Quận 2, TP. HCM", price:"3.1 tỷ", unit:"/căn", beds:2, baths:2, area:78, badge:"", img:"https://images.unsplash.com/photo-1486325212027-8081e485255e?w=500&q=80" },
+  { id:5, name:"Đất nền Bình Dương New City", loc:"Thủ Dầu Một, Bình Dương", price:"1.8 tỷ", unit:"/lô", beds:0, baths:0, area:100, badge:"", img:"https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&q=80" },
+  { id:6, name:"Shophouse Midtown Phú Mỹ Hưng", loc:"Quận 7, TP. HCM", price:"12 tỷ", unit:"/căn", beds:4, baths:3, area:185, badge:"Hot", img:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" },
+];
+
+function renderCards(containerId, data) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  el.innerHTML = data.map(p => `
+    <div class="prop-card">
+      <div class="card-img">
+        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${p.badge ? `<span class="card-badge ${p.badge==='Mới'?'new':''}">${p.badge}</span>` : ''}
+      </div>
+      <div class="card-body">
+        <div class="card-name">${p.name}</div>
+        <div class="card-loc"><i class="fas fa-map-marker-alt"></i>${p.loc}</div>
+        <div class="card-meta">
+          ${p.beds ? `<span><i class="fas fa-bed"></i>${p.beds} PN</span>` : ''}
+          ${p.baths ? `<span><i class="fas fa-bath"></i>${p.baths} WC</span>` : ''}
+          <span><i class="fas fa-ruler-combined"></i>${p.area} m²</span>
+        </div>
+        <div class="card-footer">
+          <div class="card-price">${p.price} <span>${p.unit}</span></div>
+          <div class="card-action">
+            <button class="btn-detail" onclick="viewDetail(${p.id})">Xem chi tiết</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderCards('new-projects', properties.slice(0, 6));
+renderCards('popular-projects', [...properties].sort(() => Math.random()-0.5).slice(0,6));
+
+// ===== CAT SELECT =====
+function selectCat(el) {
+  document.querySelectorAll('.cat-item').forEach(i => i.classList.remove('active'));
+  el.classList.add('active');
+}
+
+// ===== VIEW DETAIL =====
+function viewDetail(id) {
+  const p = properties.find(x => x.id === id);
+  if (!p) return;
+  alert(`📍 ${p.name}\n📌 ${p.loc}\n💰 Giá: ${p.price}${p.unit}\n📐 Diện tích: ${p.area} m²`);
+}
+
+// ===== COUNTER ANIMATION =====
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  let count = 0;
+  const step = Math.ceil(target / 60);
+  const timer = setInterval(() => {
+    count += step;
+    if (count >= target) { count = target; clearInterval(timer); }
+    el.textContent = count.toLocaleString('vi-VN') + '+';
+  }, 30);
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.stat-num').forEach(animateCounter);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.stats-row').forEach(el => observer.observe(el));
+
+// ===== SEARCH =====
+document.querySelector('.btn-search').addEventListener('click', function() {
+  const q = document.querySelector('.search-bar input').value.trim();
+  if (q) alert(`Đang tìm kiếm: "${q}"`);
+  else alert('Vui lòng nhập từ khóa tìm kiếm.');
+});
+
+// ===== NEWSLETTER =====
+document.querySelector('.footer-newsletter button').addEventListener('click', function() {
+  const email = this.previousElementSibling.value.trim();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    alert('Vui lòng nhập email hợp lệ!'); return;
+  }
+  alert('Đăng ký thành công! Cảm ơn bạn đã theo dõi Luxus.');
+  this.previousElementSibling.value = '';
+});
+</script>
+</body>
+</html>
